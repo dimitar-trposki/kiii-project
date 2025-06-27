@@ -24,10 +24,10 @@ jobs:
 
       - name: Tag and Push Backend Image
         run: |
-          docker tag bookeshop dimitartrposki/kiii-project:backend
+          docker tag backend dimitartrposki/kiii-project:backend
           docker push dimitartrposki/kiii-project:backend
 
       - name: Tag and Push Frontend Image
         run: |
-          docker tag bookeshopfrontend dimitartrposki/kiii-project:frontend
+          docker tag frontend dimitartrposki/kiii-project:frontend
           docker push dimitartrposki/kiii-project:frontend
