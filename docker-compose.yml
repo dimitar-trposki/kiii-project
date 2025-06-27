@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:17.4
+    restart: always
+    environment:
+      POSTGRES_USER: emt
+      POSTGRES_PASSWORD: emt
+      POSTGRES_DB: emc_bookeshop
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./BookEShop/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./BookEShop/views.sql:/docker-entrypoint-initdb.d/views.sql
+    ports:
+      - "2345:5432"
+
+  backend:
+    build:
+      context: ./BookEShop
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/emc_bookeshop
+      SPRING_DATASOURCE_USERNAME: emt
+      SPRING_DATASOURCE_PASSWORD: emt
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./bookeshopfrontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    command: npm run dev -- --host
+
+volumes:
+  pgdata:

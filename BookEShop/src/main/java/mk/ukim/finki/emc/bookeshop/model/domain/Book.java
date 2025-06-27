@@ -37,7 +37,7 @@ public class Book {
         this.author = author;
         this.availableCopies = availableCopies;
         this.isDeleted = false;
-        this.dateCreated = dateCreated;
+        this.dateCreated = LocalDateTime.now();
     }
 
     public Book(Long id, String name, Category category, Author author, Integer availableCopies, LocalDateTime dateCreated) {
