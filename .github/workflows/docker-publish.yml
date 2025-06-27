@@ -19,15 +19,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set up Docker Compose
-        run: |
-          docker compose -f docker-compose.yml build
+        run: docker compose -f docker-compose.yml build
 
       - name: Tag and Push Backend Image
-        run: |
-          docker tag backend dimitartrposki/kiii-project:backend
-          docker push dimitartrposki/kiii-project:backend
+        run: docker push dimitartrposki/kiii-project:backend
 
       - name: Tag and Push Frontend Image
-        run: |
-          docker tag frontend dimitartrposki/kiii-project:frontend
-          docker push dimitartrposki/kiii-project:frontend
+        run: docker push dimitartrposki/kiii-project:frontend
