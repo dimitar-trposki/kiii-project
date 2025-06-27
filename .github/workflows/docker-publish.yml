@@ -24,4 +24,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: dimitartrposki/kiii_prep_01:latest
+          tags: dimitartrposki/kiii-project:latest
