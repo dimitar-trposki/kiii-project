@@ -2,7 +2,7 @@ import React from 'react';
 import BooksPage from "./ui/pages/BooksPage/BooksPage.jsx"
 import AuthorsPage from "./ui/pages/AuthorsPage/AuthorsPage.jsx"
 import CountriesPage from "./ui/pages/CountriesPage/CountriesPage.jsx"
-import {BrowserRouter, Routes, Route} from "react-router";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Layout from "./ui/components/layout/Layout/Layout.jsx";
 import HomePage from "./ui/pages/HomePage/HomePage.jsx";
 import BooksDetails from "./ui/components/books/BookDetails/BookDetails.jsx";
