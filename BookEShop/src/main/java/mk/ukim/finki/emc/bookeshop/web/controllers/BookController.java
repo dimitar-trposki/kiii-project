@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173")
+//@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/books")
 @Tag(name = "Book API", description = "Endpoints for managing books")
@@ -51,7 +51,7 @@ public class BookController {
     }
 
     @Operation(summary = "Get book by ID", description = "Finds a book by its ID.")
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<DisplayBookDto> findById(@PathVariable Long id) {
         return bookApplicationService.findById(id)
                 .map(book -> ResponseEntity.ok().body(book))

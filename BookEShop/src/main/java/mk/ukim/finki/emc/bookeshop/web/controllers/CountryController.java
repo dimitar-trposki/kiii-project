@@ -39,7 +39,7 @@ public class CountryController {
     }
 
     @Operation(summary = "Get country by ID", description = "Finds a country by its ID.")
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<DisplayCountryDto> findById(@PathVariable Long id) {
         return countryApplicationService.findById(id)
                 .map(c -> ResponseEntity.ok().body(c))

@@ -57,7 +57,14 @@ const useCountries = () => {
         fetchCountries();
     }, [fetchCountries]);
 
-    return {...state, onAdd: onAdd, onEdit: onEdit, onDelete: onDelete};
+    return {
+        // ...state,
+        countries: state.countries,
+        loading: state.loading,
+        onAdd: onAdd,
+        onEdit: onEdit,
+        onDelete: onDelete
+    };
 };
 
 export default useCountries;

@@ -8,32 +8,24 @@ import HomePage from "./ui/pages/HomePage/HomePage.jsx";
 import BooksDetails from "./ui/components/books/BookDetails/BookDetails.jsx";
 import AuthorsDetails from "./ui/components/authors/AuthorDetails/AuthorDetails.jsx";
 import CountriesDetails from "./ui/components/countries/CountryDetails/CountryDetails.jsx";
-import Register from "./ui/components/auth/Register/Register.jsx";
-import Login from "./ui/components/auth/Login/Login.jsx";
-import ProtectedRoute from "./ui/components/routing/ProtectedRoute/ProtectedRoute.jsx";
-import Wishlist from "./ui/components/wishlist/Wishlist/Wishlist.jsx";
 
-const App = () => {
+function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/register" element={<Register/>}/>
-                <Route path="/login" element={<Login/>}/>
                 <Route path="/" element={<Layout/>}>
                     <Route index element={<HomePage/>}/>
-                    <Route element={<ProtectedRoute/>}>
-                        <Route path="books" element={<BooksPage/>}/>
-                        <Route path="authors" element={<AuthorsPage/>}/>
-                        <Route path="countries" element={<CountriesPage/>}/>
-                        <Route path="books/:id" element={<BooksDetails/>}/>
-                        <Route path="authors/:id" element={<AuthorsDetails/>}/>
-                        <Route path="countries/:id" element={<CountriesDetails/>}/>
-                        <Route path="wishlist" element={<Wishlist/>}/>
-                    </Route>
+                    <Route path="books" element={<BooksPage/>}/>
+                    <Route path="authors" element={<AuthorsPage/>}/>
+                    <Route path="countries" element={<CountriesPage/>}/>
+                    <Route path="books/:id" element={<BooksDetails/>}/>
+                    <Route path="authors/:id" element={<AuthorsDetails/>}/>
+                    <Route path="countries/:id" element={<CountriesDetails/>}/>
+                    {/*<Route path="wishlist" element={<Wishlist/>}/>*/}
                 </Route>
             </Routes>
         </BrowserRouter>
     );
-};
+}
 
 export default App;

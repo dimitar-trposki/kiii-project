@@ -8,6 +8,7 @@ import mk.ukim.finki.emc.bookeshop.model.projections.AuthorProjection;
 import mk.ukim.finki.emc.bookeshop.model.views.AuthorsPerCountryView;
 import mk.ukim.finki.emc.bookeshop.service.application.AuthorApplicationService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class AuthorController {
     }
 
     @Operation(summary = "Add a new author", description = "Creates a new author.")
+    @PreAuthorize("hasRole('LIBRARIAN')")
     @PostMapping("/add")
     public ResponseEntity<DisplayAuthorDto> save(@RequestBody CreateAuthorDto author) {
         return authorApplicationService.save(author)
@@ -41,7 +43,7 @@ public class AuthorController {
     }
 
     @Operation(summary = "Get author by ID", description = "Finds a author by its ID.")
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<DisplayAuthorDto> findById(@PathVariable Long id) {
         return authorApplicationService.findById(id)
                 .map(author -> ResponseEntity.ok().body(author))

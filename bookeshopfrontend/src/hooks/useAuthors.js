@@ -56,7 +56,14 @@ const useAuthors = () => {
         fetchAuthors();
     }, [fetchAuthors]);
 
-    return {...state, onAdd: onAdd, onEdit: onEdit, onDelete: onDelete};
+    return {
+        // ...state,
+        authors: state.authors,
+        loading: state.loading,
+        onAdd: onAdd,
+        onEdit: onEdit,
+        onDelete: onDelete
+    };
 };
 
 export default useAuthors;

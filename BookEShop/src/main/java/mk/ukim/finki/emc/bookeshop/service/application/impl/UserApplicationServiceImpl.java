@@ -5,7 +5,7 @@ import mk.ukim.finki.emc.bookeshop.dto.DisplayUserDto;
 import mk.ukim.finki.emc.bookeshop.dto.LoginResponseDto;
 import mk.ukim.finki.emc.bookeshop.dto.LoginUserDto;
 import mk.ukim.finki.emc.bookeshop.model.domain.User;
-import mk.ukim.finki.emc.bookeshop.helpers.JwtHelper;
+//import mk.ukim.finki.emc.bookeshop.helpers.JwtHelper;
 import mk.ukim.finki.emc.bookeshop.service.application.JwtLogApplicationService;
 import mk.ukim.finki.emc.bookeshop.service.application.UserApplicationService;
 import mk.ukim.finki.emc.bookeshop.service.domain.UserService;
@@ -18,12 +18,11 @@ import java.util.Optional;
 public class UserApplicationServiceImpl implements UserApplicationService {
 
     private final UserService userService;
-    private final JwtHelper jwtHelper;
+//    private final JwtHelper jwtHelper;
     private final JwtLogApplicationService jwtLogApplicationService;
 
-    public UserApplicationServiceImpl(UserService userService, JwtHelper jwtHelper, JwtLogApplicationService jwtLogApplicationService) {
+    public UserApplicationServiceImpl(UserService userService, JwtLogApplicationService jwtLogApplicationService) {
         this.userService = userService;
-        this.jwtHelper = jwtHelper;
         this.jwtLogApplicationService = jwtLogApplicationService;
     }
 
@@ -46,12 +45,12 @@ public class UserApplicationServiceImpl implements UserApplicationService {
                 loginUserDto.username(),
                 loginUserDto.password());
 
-        String token = jwtHelper.generateToken(user);
+//        String token = jwtHelper.generateToken(user);
 
-        Instant issuedAt = jwtHelper.getIssuedAt(token);
-        Instant expiresAt = jwtHelper.getExpiration(token);
-        jwtLogApplicationService.logToken(user.getUsername(), token, issuedAt, expiresAt);
-        return Optional.of(new LoginResponseDto(token));
+//        Instant issuedAt = jwtHelper.getIssuedAt(token);
+//        Instant expiresAt = jwtHelper.getExpiration(token);
+//        jwtLogApplicationService.logToken(user.getUsername(), token, issuedAt, expiresAt);
+        return Optional.empty();
     }
 
     @Override

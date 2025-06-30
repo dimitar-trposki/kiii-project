@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: bookeshop
+data:
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://bookeshop-db:5432/emc_bookeshop"
+  SPRING_DATASOURCE_USERNAME: "emt"
